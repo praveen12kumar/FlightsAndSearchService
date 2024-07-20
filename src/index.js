@@ -1,19 +1,24 @@
-import express from "express";
-import bodyParser from "body-parser";
-import { PORT } from "./config/serverConfig.js";
+// Require necessary modules
+const express = require("express");
+const bodyParser = require("body-parser");
+const { PORT } = require("./config/serverConfig");
 
-
-const setupAndStartServer = async()=>{
+// Function to set up and start the server
+function setupAndStartServer() {
+    // Creating an Express application instance
     const app = express();
 
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
+    // Using built-in middleware to parse JSON bodies
+    app.use(bodyParser.json());
 
+    // Using built-in middleware to parse URL-encoded bodies
+    app.use(bodyParser.urlencoded({ extended: true }));
 
-
-    app.listen(PORT, ()=>{
-    console.log(`Server start running at Port:`,PORT);
+    // Starting the server on the specified port
+    app.listen(PORT, () => {
+        console.log(`Server started running at Port: ${PORT}`);
     });
 }
 
+// Call the function to start the server
 setupAndStartServer();

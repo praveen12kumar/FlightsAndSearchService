@@ -1,8 +1,13 @@
-import { config } from "dotenv";
-config({
-    path:".env"
+// Require necessary modules
+const dotenv = require('dotenv');
+
+// Load environment variables from .env file
+dotenv.config({
+    path: ".env"
 });
 
+// Access the PORT variable from the environment
 const PORT = process.env.PORT;
 
-export{PORT};
+// Export the PORT variable
+module.exports = { PORT };
